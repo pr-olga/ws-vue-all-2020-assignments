@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ex-3</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/vue@next" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main id="app">
+    <!--BEGIN: Article -->
+    <section class="block article">
+      <div class="article__body">
+  <!--
+   TODO
+   Assignment 5:
+   If the number of likes reaches 10, add the star to the title
+   Notes: star hex code ist &#9733;
+  -->
+        <h2 class="article__title"><span class="star"><!--The star must be here--></span> Effects present letters</h2>
+        <div class="article__snippet">
+          Effects present letters inquiry no an removed or friends. Desire behind latter me though in. Supposing shameless am he engrossed up additions. My possible peculiar together to. Desire so better am cannot he up before points. Remember mistaken opinions it pleasure of debating. Court front maids forty if aware their at. Chicken use are pressed removed.
+
+          At distant inhabit amongst by. Appetite welcomed interest the goodness boy not. Estimable education for disposing pronounce her. John size good gay plan sent old roof own. Inquietude saw understood his friendship frequently yet. Nature his marked ham wished.
+        </div>
+          <div class="article__detials">
+            <div class="article-buttons article-likes">
+              <div class="article-likes__description">
+                <span id="article-likes__number">{{ likesNumber }}</span>
+                  reactions
+              </div>
+              <button class="button button--red" @click="increaseLikes()">
+                <span class="article-likes__heart">&#10084;</span>
+              </button>
+            </div>
+            <div class="article-buttons article-donations">
+              <div class="article-likes__description">
+                <span id="article-likes__number">{{ donations }}€</span>
+                  donated
+              </div>
+              <button class="button button--green" @click="donateFiveEuro(5)">
+                <span >donate 5€</span>
+              </button>
+            </div>
+          </div>
+        </div>
+    </section>
+  <!--END: Article -->
+
+  <!--
+   TODO
+   Assignment 4:
+   Check if the submitted name is 'Donald'.
+   If it is the case:
+      1. put alert message 'Hit the road, Donald!' in the box below
+      2. set red text color to the comment
+      3. otherwise, hide the message and delete the class
+   Note: apply watch
+  -->
+
+  <!--BEGIN: Alert -->
+    <section class="block block-alert">
+      <div class="alert_body">
+        <!-- Alert message for Donald -->
+      </div>
+    </section>
+  <!--END: Alert -->
+
+  <!--BEGIN: Dicsussion -->
+    <section class="block discussion">
+      <div class="discussion__body">
+        <h3 class="discussion__title"> Discussion </h3>
+        <div class="discussion__comment" :class="{'text-color--red': setTextColor}">
+          {{comment.commentText}}
+        </div>
+        <div class="discussion__details">
+          <div class="author">{{comment.commentAuthor}}</div>
+        </div>
+      <div class="discussion__form">
+        <form @submit.prevent="addComment" class="discussion__form__fields">
+          <div class="form-el">
+            <label for="comment">Comment</label>
+            <textarea name="comment" id="comment" cols="50" rows="5" @input="setCommentText">
+            </textarea>
+          </div>
+          <div class="form-el">
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" class="input-name" @input="setCommentAuthor">
+          </div>
+          <button class="button button--black form-el">send</button>
+        </form>
+      </div>
+      </div>
+    </section>
+    <!--END: Dicsussion -->
+  </main>
+</body>
+<!--
+    For the sake of simplicity, example contains the code
+    that is nessessary for this assignment only.
+-->
+</html>
